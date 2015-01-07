@@ -1,39 +1,18 @@
-map <F9> :call SaveInputData()<CR>
-func! SaveInputData()
-	exec "tabnew"
-	exec 'normal "+gP'
-	exec "w! /tmp/input_data"
-endfunc
-
-
-
-
-"colorscheme torte
-"colorscheme murphy
-"colorscheme desert 
-"colorscheme desert 
-"colorscheme elflord
-colorscheme ron
-
-
-
-
-"set fencs=utf-8,gb2312,gbk,gb18030,ucs-bom,shift-jis,cp936
-"set termencoding=utf-8
-"set encoding=prc
-"set fileencodings=utf-8,gb2312,gbk,gb18030,ucs-bom,cp936
-"set fileencoding=utf-8
+set fencs=utf-8,gb2312,gbk,gb18030,ucs-bom,shift-jis,cp936
+set termencoding=utf-8
+set encoding=prc
+set fileencodings=utf-8,gb2312,gbk,gb18030,ucs-bom,cp936
+set fileencoding=utf-8
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 显示相关  
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示  
 "winpos 5 5          " 设定窗口位置  
 "set lines=40 columns=155    " 设定窗口大小  
 set go=             " 不要图形按钮  
 "color asmanian2     " 设置背景主题  
-"set guifont=Courier_New:h10:cANSI   " 设置字体  
-"syntax on           " 语法高亮  
+set guifont=Courier_New:h10:cANSI   " 设置字体  
+syntax on           " 语法高亮  
 autocmd InsertLeave * se nocul  " 用浅色高亮当前行  
 autocmd InsertEnter * se cul    " 用浅色高亮当前行  
 "set ruler           " 显示标尺  
@@ -44,8 +23,6 @@ set showcmd         " 输入的命令显示出来，看的清楚些
 set novisualbell    " 不要闪烁(不明白)  
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
 set laststatus=1    " 启动显示状态行(1),总是显示状态行(2)  
-set foldenable      " 允许折叠  
-set foldmethod=manual   " 手动折叠  
 "set background=dark "背景使用黑色 
 set nocompatible  "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限  
 " 显示中文帮助
@@ -54,11 +31,18 @@ if version >= 603
 	set encoding=utf-8
 endif
 " 设置配色方案
+colorscheme murphy
+"colorscheme torte
 "colorscheme murphy
+"colorscheme desert 
+"colorscheme desert 
+"colorscheme elflord
+"colorscheme ron
+
 "字体 
-"if (has("gui_running")) 
-"   set guifont=Bitstream\ Vera\ Sans\ Mono\ 10 
-"endif 
+if (has("gui_running")) 
+   set guifont=Bitstream\ Vera\ Sans\ Mono\ 10 
+endif 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""新文件标题
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -107,6 +91,13 @@ endfunc
 
 nmap <leader>w :w!<cr>
 nmap <leader>f :find<cr>
+
+map <F9> :call SaveInputData()<CR>
+func! SaveInputData()
+    exec "tabnew"
+    exec 'normal "+gP'
+    exec "w! /tmp/input_data"
+endfunc
 
 " 映射全选+复制 ctrl+a
 map <C-A> ggVGY
@@ -183,7 +174,7 @@ set guioptions-=m           " 隐藏菜单栏
 set foldcolumn=0
 set foldmethod=indent 
 set foldlevel=3 
-set foldenable              " 开始折叠
+set nofoldenable              " 开始折叠
 " 不要使用vi的键盘模式，而是vim自己的
 set nocompatible
 " 语法高亮
